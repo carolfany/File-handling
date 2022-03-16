@@ -25,7 +25,7 @@ def removezero(rootpath):
         except:
             continue
 
-rootpath = input("Escreva o caminho da pasta raiz: ")
+rootpath = input("Paste here the root directory you want to search on: ")
 c=0
 while c<1:               
     try:
