@@ -4,7 +4,7 @@ import shutil
 
 def removezero(rootpath):
     pths = []
-    ext = [""] #TROCAR AQUI PARA BUSCAR EM TODAS AS EXTENSÕES OU EM UMA EM ESPECÍFICO
+    ext = [""] #swap this part to seek in all file extensions ([""]) or in a particular one (such as: [".pdf"])
     for subdirs, dirs, files in os.walk(rootpath):
         for filename in files:
             if filename.lower().endswith(tuple(ext)):
@@ -14,11 +14,11 @@ def removezero(rootpath):
         print(str(i))	
         try:
             with open(str(i), "rb") as f:
-                if (re.search(b'\xEF\xBB\xBF\x3C', f.read(100))): #TROCAR AQUI O HEADER QUE DESEJA BUSCAR (por exemplo pdf, doc, mp3, zip, etc.
+                if (re.search(b'\xEF\xBB\xBF\x3C', f.read(100))): #Change here the file signature you need to look for (such as pdf, doc, mp3, zip...)
                     try:
                         print ("File found.")
                         f.close()
-                        os.rename(str(i), str(i) + '.extensãoBuscada') #TROCAR AQUI O "extensãoBuscada" PELA EXTENSÃO CONFORME HEADER QUE ESTÁ BUSCANDO
+                        os.rename(str(i), str(i) + '.extension') #Change "extension" for the actual extension of the file signature searched for above
                         print ("File renamed.")
                     except:
                         continue
